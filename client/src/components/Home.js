@@ -13,7 +13,7 @@ function Home() {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        const result = await fetch('http://localhost:5000/', {
+        const result = await fetch('/', {
             method: 'POST',
             mode: 'cors',
             headers: {
