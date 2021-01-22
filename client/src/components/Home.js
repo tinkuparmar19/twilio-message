@@ -3,8 +3,25 @@ import React, { useState } from 'react'
 import { useAuth } from '../AuthContext'
 import { useHistory } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        marginTop: '150px',
+    },
+    signup: {
+        textAlign: 'center',
+        marginBottom: '10px'
+    }, 
+    signbutton: {
+        margin: '10px 0px'
+    }
+  }));
 
 function Home() {
+
+    const classes = useStyles();
+
     const [error, setError] = useState("")
     const [message, setMessage] = useState("")
     const [sent, setSent] = useState(false)
@@ -40,9 +57,9 @@ function Home() {
       }
 
     return (
-        <div>
+        <div className={classes.root}>
             <Container component="main" maxWidth="xs">
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h5" className={classes.signup}>
                     send message
                 </Typography>
                 { sent && 
@@ -69,6 +86,7 @@ function Home() {
                         fullWidth
                         variant="contained"
                         color="primary"
+                        className={classes.signbutton}
                     >
                         Send
                     </Button>

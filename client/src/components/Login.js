@@ -3,8 +3,25 @@ import { Button, Container, CssBaseline, Grid, TextField, Typography } from '@ma
 import { Link, useHistory } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
 import { useAuth } from '../AuthContext'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        marginTop: '150px',
+    },
+    signup: {
+        textAlign: 'center',
+        marginBottom: '10px'
+    }, 
+    signbutton: {
+        margin: '10px 0px'
+    }
+  }));
 
 const Login = () => {
+
+    const classes = useStyles();
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
@@ -28,11 +45,11 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className={classes.root}>
             <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div >
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h5" className={classes.signup}>
                 Login
                 </Typography>
                 { error && <Alert severity="error">{error}</Alert>}
@@ -72,6 +89,7 @@ const Login = () => {
                     variant="contained"
                     color="primary"
                     disabled={loading}
+                    className={classes.signbutton}
                 >
                     Login
                 </Button>
